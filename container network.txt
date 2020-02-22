@@ -1,0 +1,18 @@
+Docker Networks: Cli Management
+===============================
+> docker network ls <<< show networks
+> docker network inspect [network name] <<< inspect a network
+> docker network create [network name] <<< create a network
+> docker network connect [network id] <<< attach a network to container
+> docker network disconnect [network id] <<< detach a network from container
+
+E.g. > docker container run -d --name new_nginx --network my_app_net nginx
+
+
+
+
+Docker Networks: DNS
+====================
+> docker container exec -it [container 1 name] ping [container 2 name] <<< please first ensure two containers are in the same network
+
+To joinsame network, understand this, > docker container run -d --name new_nginx --network my_app_net nginx

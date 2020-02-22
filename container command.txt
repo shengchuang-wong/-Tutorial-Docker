@@ -1,0 +1,107 @@
+Container Command
+=================
+1. Create container
+> docker container run --publish 80:80 [> --detach] nginx
+
+|| 
+
+> docker container run [-d] [--name name] [image]
+> docker container run -d --name nginx nginx
+
+Note: 
+--detach make it run in background
+At the same time, you will get the container ID
+Open browser, and go to localhost
+
+2. List container
+> docker container ls [> -a]
+
+Note: 
+-a <<< list all created container
+
+3. Stop container
+> docker container stop [Container ID]
+
+4. View latest container logs
+> docker container logs webhost
+
+5. List process run in the container
+> docker container top webhost
+
+6. View container help
+> docker container --help
+
+7. Remove list of container
+docker container rm [1st id] [2nd id] [3rd id] [and so on]
+
+Note:
+If facing problem during removing, use next command
+
+8. Force container to stop and remove
+docker container rm -f [container id]
+
+9. Noted on changin the defaults command
+docker container run --publish [8080:80] --name webhost -d nginx:[1:11] [nginx -T]
+
+i)   change host listening port
+ii)  change version of image
+iii) change CMD run on start
+
+10. show all running proceses
+> ps aux
+
+11. Show all docker image
+> docker image ls
+
+
+
+
+MongoDB
+=======
+1. Start mongo db process
+> docker run --name mongo -d mongo
+
+2. List all processes
+> docker ps
+
+3. List all mongo processes
+> docker top mongo
+
+4.) Stop mongo process
+> docker stop [name of mongo process]
+
+5.) Start mongo process
+> docker start [name of mongo process]
+
+6.) List process aux with keyword mongo
+> ps aux | grep [keyword]
+
+
+
+
+What's Going On In Containers?
+==============================
+> docker container top [container name] <<< process list in one container
+> docker container inspect [container name] <<< details of one container config
+> docker container stats [container name] <<< performance stats for all containers
+
+
+
+
+Getting a Shell Inside Containers
+=================================
+> docker container run -it --name [name] [program] <<< start new container interactively
+
+E.g. > docker container run -it --name proxy nginx bash
+
+> docker container exec -it --name [name] [program] <<< run additional command in existing container
+
+E.g. > docker container exec -it --name mysql bash
+
+
+
+
+Alphine
+=======
+> docker pull alphine <<< installed and run alphine
+> docker container run -it alphine sh <<< access alphine

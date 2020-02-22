@@ -1,0 +1,57 @@
+Container Images
+================
+1. docker pull [image name] <<< to download or update the latest
+
+Alternative
+
+> docker pull [image name]:[version] <<< download specify version
+
+
+history
+-------
+> docker history nginx:latest <<< show layers of changes made in image
+
+inspect
+-------
+> docker image inspect [image name] <<< return all the details with the image with JSON format
+
+local custom image
+------------------
+> docker image build -t customnginx .
+customngix = image name
+. = build inside current directory
+
+After changing settings, build again
+
+Assignment: Create custom image for Node.js
+===========================================
+1.) Settings as ./code/udemy-xxxxxx/dockerfile-assignment-1/Dockerfile, amd powershell go into the directory
+
+2.) To build the image
+> docker build -t testnode .
+
+3.) Run it
+> docker container run --rm -p 80:3000 testnode
+
+4.) Push image to docker hub (Remember to login docker account first, by command > docker login)
+> docker tag [image name in local] [docker hub id]/[image name in hub]
+
+E.g. > docker tag testnode shengchuang96/testnode
+
+> docker push [docker hub id]/[image name in hub]
+
+E.g. > docker push shengchuang96/testnode
+
+5.) Now the image is cached/downloaded in local, to remove it
+> docker image rm [docker hub id]/[image name in hub]
+
+E.g. > docker image rm shengchuang96/testnode
+
+To clear the process
+> docker container ls
+> docker container stop [container id]
+
+6.) Download from docker hub and immediate run it
+> docker container run --rm -p [port] [docker hub id]/[image name in hub]
+
+E.g. > docker container run --rm -p 80:3000 shengchuang96/testnode
